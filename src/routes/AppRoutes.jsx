@@ -1,19 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import Login from "../pages/Login";
+import Upload from "../../opina-backend/src/routes/Upload"; // ✅ Aqui está o novo import
 
-const AppRoutes = () => {
+function AppRoutes() {
   return (
-    <Router>
+    <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<Upload />} /> {/* ✅ Nova rota */}
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
-};
+}
 
 export default AppRoutes;
